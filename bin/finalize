@@ -16,8 +16,7 @@ GOROOT=$GoInstallDir/go GOPATH=$BUILDPACK_DIR $GoInstallDir/go/bin/go build -o $
 GOROOT=$GoInstallDir/go GOPATH=$BUILDPACK_DIR $GoInstallDir/go/bin/go get -u github.com/revel/cmd/revel
 pwd
 ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
-PATH=$PATH:$GoInstallDir/go/bin:$BUILDPACK_DIR/bin cd $BUILDPACK_DIR/ revel build vendorcrm $BUILDPACK_DIR/bin
-echo $GOPATH
+PATH=$PATH:$GoInstallDir/go/bin:$BUILDPACK_DIR/bin cd $BUILDPACK_DIR/ revel build vendorcrm /bin
 
 $output_dir/finalize "$BUILD_DIR" "$CACHE_DIR" "$DEPS_DIR" "$DEPS_IDX" "$PROFILE_DIR"
 
