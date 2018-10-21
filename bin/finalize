@@ -14,9 +14,8 @@ output_dir=$(mktemp -d -t finalizeXXX)
 echo "-----> Running go build finalize"
 GOROOT=$GoInstallDir/go GOPATH=$BUILDPACK_DIR $GoInstallDir/go/bin/go build -o $output_dir/finalize go/finalize/cli
 GOROOT=$GoInstallDir/go GOPATH=$BUILDPACK_DIR $GoInstallDir/go/bin/go get -u github.com/revel/cmd/revel
-GOROOT=$GoInstallDir/go GOPATH=$BUILDPACK_DIR $GoInstallDir/go/bin/go get -u github.com/luckily248/vendorcrm
 pwd
-PATH=$PATH:$GoInstallDir/go/bin:$BUILDPACK_DIR/bin cd $BUILDPACK_DIR/ revel build github.com/luckily248/vendorcrm /home/vcap/app/bin
+PATH=$PATH:$GoInstallDir/go/bin:$BUILDPACK_DIR/bin cd $BUILDPACK_DIR/ revel build vendorcrm /home/vcap/app/bin
 cd /home/vcap
 ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 
